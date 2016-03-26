@@ -8,8 +8,7 @@ productMainController.controller('addProductController', ['$scope', '$http', '$l
         $scope.addPerson = true;
         $scope.editPerson = false;
         $scope.addProduct = function () {
-
-            //$http.post("/product", $scope.product).success(function () {
+          //  $http.post("http://localhost:8080/product", $scope.product).success(function () {
             productService.save($scope.product,function(){
                 $rootScope.addSuccess = true;
                 $location.path("listProduct");
