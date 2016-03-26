@@ -7,8 +7,15 @@ productService.factory('productService',function($resource){
             method: 'PUT' // this method issues a PUT request
         }});
 
-})
+});
 
+productService.factory('queryProductService',function($resource) {
+    return $resource('/getProduct/?name=:name',
+        {
+            query: {method: 'GET', params: {name: ''}, isArray: true}
+
+        });
+});
 productService.service('totalCalService',function() {
     this.getTotalNetPrice = function (products) {
         var output = 0.0;
@@ -19,4 +26,4 @@ productService.service('totalCalService',function() {
         }
         return output;
     }
-})
+});
