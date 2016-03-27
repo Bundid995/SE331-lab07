@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Locale;
 import java.util.Properties;
 
-
 @CrossOrigin
 @Controller
 @RequestMapping("/messageBundle")
@@ -21,8 +20,7 @@ public class SerializableMessageBundleController {
      */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public Properties list(@RequestParam String lang)
-    {
+    public Properties list(@RequestParam String lang) {
         return messageBundle.getAllProperties(new Locale(lang));
     }
 

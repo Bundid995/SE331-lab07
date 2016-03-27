@@ -32,10 +32,12 @@ import java.util.Properties;
  *
  * @author Petri Kainulainen
  */
+
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableJpaRepositories("camt.se331.shoppingcart.repository")
 @PropertySources(value={@PropertySource("classpath:/hibernate.properties")})
+
 class PersistenceContext {
     private static final String[] ENTITY_PACKAGES = {
             "camt.se331.shoppingcart.entity"
@@ -74,6 +76,7 @@ class PersistenceContext {
         boneCPDataSource.setAcquireIncrement(5);
         boneCPDataSource.setStatementsCacheSize(100);
 
+
         return boneCPDataSource;
 
     }
@@ -105,8 +108,6 @@ class PersistenceContext {
         factory.afterPropertiesSet();;
         return factory.getObject();
     }
-
-
     @Bean
     @Autowired
     public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
@@ -116,6 +117,5 @@ class PersistenceContext {
         txManager.setJpaDialect(jpaDialect);
         return txManager;
     }
-
 
 }
