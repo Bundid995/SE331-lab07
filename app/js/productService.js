@@ -20,14 +20,3 @@ productService.service('totalCalService',function() {
         return output;
     }
 })
-
-productService.factory('queryProductService',function($resource) {
-    return $resource('/getProduct/?name=:name',
-        {
-            query: {method: 'GET', params: {name: ''}, isArray: true}
-
-
-        })
-});
-
-
