@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Locale;
 import java.util.Properties;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 912705ac298734058f2772c85827bb6083fa70ba
 @CrossOrigin
 @Controller
 @RequestMapping("/messageBundle")

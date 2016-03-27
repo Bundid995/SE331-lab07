@@ -11,11 +11,7 @@ import java.util.List;
 /**
  * Created by Film on 3/25/2016.
  */
-<<<<<<< HEAD
 
-=======
-@Profile("db.dbdao")
->>>>>>> 912705ac298734058f2772c85827bb6083fa70ba
 @Repository
 public class DbProductDao implements ProductDao {
     @Autowired
