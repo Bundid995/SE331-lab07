@@ -18,7 +18,8 @@ public class DbProductDao implements ProductDao {
     ProductRepository productRepository;
     @Override
     public List<Product> getProducts() {
-        return null;
+
+        return productRepository.findAll();
     }
 
     @Override
