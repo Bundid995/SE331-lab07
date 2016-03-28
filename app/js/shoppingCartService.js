@@ -1,0 +1,12 @@
+/**
+ * Created by KIMHUN on 3/28/2016.
+ */
+'use strict'
+var shoppingCartServices = angular.module('shoppingCartServices',['ngResource']);
+shoppingCartServices.factory('shoppingCartService',function($resource){
+        return $resource('/shoppingcart/:id', { id: '@_id' }, {
+                update: {
+                    method: 'PUT' // this method issues a PUT request
+                }});
+
+        })
