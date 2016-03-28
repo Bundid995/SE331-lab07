@@ -20,8 +20,8 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(value = "getProduct",method = RequestMethod.GET)
-    public List<Product> getListByName(@RequestParam("name")String name){
-        return productService.getProductsByName(name);
+    public List<Product> getListByNameOrDescription(@RequestParam("name")String name){
+        return productService.getProductsByNameOrDescription(name,name);
 
     }
 
