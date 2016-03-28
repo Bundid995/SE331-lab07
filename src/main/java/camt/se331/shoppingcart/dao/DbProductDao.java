@@ -14,14 +14,19 @@ import java.util.List;
 public class DbProductDao implements ProductDao {
 
 
-
     @Autowired
     ProductRepository productRepository;
 
     @Override
+<<<<<<< HEAD
     public List<Product> getProductsByNameContaining(String name) {
         return productRepository.findByNameContaining(name);
+=======
+    public List<Product> getProductsByNameOrDescription(String name, String description) {
+        return productRepository.findByNameOrDescriptionContainingIgnoreCase(name,name);
+>>>>>>> 9c0aae3afe197fad80d5bfdf2221f5cef03bf66a
     }
+    
 
     @Override
     public List<Product> getProducts() {

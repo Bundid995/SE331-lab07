@@ -17,8 +17,13 @@ public class ProductServiceImpl implements ProductService {
     ProductDao productDao;
 
     @Override
+<<<<<<< HEAD
     public List<Product> getProductsByNameContaining(String name) {
         return productDao.getProductsByNameContaining(name);
+=======
+    public List<Product> getProductsByNameOrDescription(String name, String description) {
+        return productDao.getProductsByNameOrDescription(name,name);
+>>>>>>> 9c0aae3afe197fad80d5bfdf2221f5cef03bf66a
     }
 
     @Override
