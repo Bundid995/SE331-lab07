@@ -15,25 +15,53 @@ import java.util.List;
 @Entity
 public class ShoppingCart {
     @Id
-            @GeneratedValue
-            Long id;
-
+    @GeneratedValue
+    Long id;
     @OneToMany(fetch = FetchType.EAGER)
-            @Cascade(CascadeType.ALL)
+    @Cascade(CascadeType.ALL)
     List<SelectedProduct> selectedProducts;
-    @Temporal(TemporalType.TIMESTAMP)
-    Date purchaseDate;
 
-    public ShoppingCart() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ShoppingCart)) return false;
+
+        ShoppingCart that = (ShoppingCart) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (getSelectedProducts() != null ? !getSelectedProducts().equals(that.getSelectedProducts()) : that.getSelectedProducts() != null)
+            return false;
+        return getPurchaseDate() != null ? getPurchaseDate().equals(that.getPurchaseDate()) : that.getPurchaseDate() == null;
 
     }
 
-    public double getTotalProductPrice(){
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (getSelectedProducts() != null ? getSelectedProducts().hashCode() : 0);
+        result = 31 * result + (getPurchaseDate() != null ? getPurchaseDate().hashCode() : 0);
+        return result;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+
+    Date purchaseDate;
+
+    public double getTotalProductPrice() {
         return 0.0;
-    };
+    }
+
+    ;
 
     public List<SelectedProduct> getSelectedProducts() {
-
         return selectedProducts;
     }
 
@@ -54,8 +82,7 @@ public class ShoppingCart {
         this.selectedProducts = selectedProducts;
     }
 
+    public ShoppingCart() {
 
-    public void setId(long id) {
-        this.id = id;
     }
 }

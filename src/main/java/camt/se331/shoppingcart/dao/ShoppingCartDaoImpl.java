@@ -1,10 +1,10 @@
-package camt.se331.shoppingcart.service;
+package camt.se331.shoppingcart.dao;
 
 import camt.se331.shoppingcart.dao.ShoppingCartDao;
 import camt.se331.shoppingcart.entity.ShoppingCart;
+import camt.se331.shoppingcart.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
@@ -12,20 +12,23 @@ import java.util.List;
 /**
  * Created by Film on 28/3/2559.
  */
-
-@Service
-public class ShoppingCartServiceImpl implements ShoppingCartService {
+@Repository
+public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Autowired
-    ShoppingCartDao shoppingCartDao;
+    ShoppingCartRepository shoppingCartRepository;
 
     @Override
-    @Transactional
     public ShoppingCart findById(Long id) {
-        return shoppingCartDao.findById(id);
+        return shoppingCartRepository.findOne(id);
     }
 
     @Override
     public List<ShoppingCart> getShoppingCarts() {
+        return null;
+    }
+
+    @Override
+    public List<ShoppingCart> getShoppingCartBefore(Date stateDate) {
         return null;
     }
 
@@ -36,7 +39,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart addShoppingCart(ShoppingCart shoppingCart) {
-        return shoppingCartDao.addShoppingCart(shoppingCart);
+        return shoppingCartRepository.save(shoppingCart);
     }
 
     @Override

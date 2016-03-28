@@ -15,14 +15,14 @@ import java.util.*;
 /**
  * Created by Film on 3/27/2016.
  */
-
 @Component
 @Profile("db.init")
 public class DatabaseInitializationBean implements InitializingBean {
     @Autowired
-    ShoppingCartRepository shoppingCartRepository;
-    @Autowired
     ProductRepository productRepository;
+    @Autowired
+    ShoppingCartRepository shoppingCartRepository;
+
     @Override
     public void afterPropertiesSet() throws Exception {
         Product[] initProduct = {
@@ -41,23 +41,39 @@ public class DatabaseInitializationBean implements InitializingBean {
         productRepository.save(Arrays.asList(initProduct));
         productRepository.save(new Product(1l, "Kindle", "the good book reader", 6900.00));
 
-
         ShoppingCart shoppingCart = new ShoppingCart();
         List<SelectedProduct> selectedProducts = new ArrayList<>();
         SelectedProduct[] initSelectedProduct = {
                 new SelectedProduct(initProduct[2], 5),
                 new SelectedProduct(initProduct[4], 2),
                 new SelectedProduct(initProduct[1], 1),
-
         };
-
-
         selectedProducts.addAll(Arrays.asList(initSelectedProduct));
         Calendar calendar = new GregorianCalendar(2015, 4, 7);
         shoppingCart.setSelectedProducts(selectedProducts);
         shoppingCart.setPurchaseDate(calendar.getTime());
         shoppingCart.setId(1L);
         shoppingCartRepository.save(shoppingCart);
+
+
+
+
+        ShoppingCart NewshoppingCart = new ShoppingCart();
+        List<SelectedProduct> NewselectedProducts = new ArrayList<>();
+        SelectedProduct[] NewinitSelectedProduct = {
+                new SelectedProduct(initProduct[2], 5),
+                new SelectedProduct(initProduct[4], 2),
+                new SelectedProduct(initProduct[1], 1),
+                new SelectedProduct(initProduct[3], 2),
+                new SelectedProduct(initProduct[5], 1),
+        };
+        NewselectedProducts.addAll(Arrays.asList(NewinitSelectedProduct));
+        Calendar Newcalendar = new GregorianCalendar(2015, 4, 7);
+        NewshoppingCart.setSelectedProducts(NewselectedProducts);
+        NewshoppingCart.setPurchaseDate(Newcalendar.getTime());
+        NewshoppingCart.setId(2L);
+        shoppingCartRepository.save(NewshoppingCart);
+
+
     }
 }
-
