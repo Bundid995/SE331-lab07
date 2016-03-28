@@ -1,6 +1,14 @@
 'use strict'
 var productService = angular.module('productServices',['ngResource']);
 
+productService.factory('queryProductService',function($resource){
+     return $resource('http://localhost:8080/getProduct/?name=:name',
+         {query:{method:'GET',params:{name:''},isArray:true}
+
+         });
+
+})
+
 productService.factory('productService',function($resource){
     return $resource('http://localhost:8080/product/:id', { id: '@_id' }, {
         update: {
@@ -9,13 +17,6 @@ productService.factory('productService',function($resource){
 
 });
 
-productService.factory('queryProductService',function($resource) {
-    return $resource('/getProduct/?name=:name',
-        {
-            query: {method: 'GET', params: {name: ''}, isArray: true}
-
-        });
-});
 productService.service('totalCalService',function() {
     this.getTotalNetPrice = function (products) {
         var output = 0.0;

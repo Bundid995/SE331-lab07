@@ -15,15 +15,18 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductDao productDao;
+
+    @Override
+    public List<Product> getProductsByName(String name) {
+        return productDao.getProductsByName(name);
+    }
+
     @Override
     public List<Product> getProducts() {
         return productDao.getProducts();
     }
 
-    @Override
-        public List<Product> getProductsByName(String name) {
-                return productDao.getProductByName(name);
-            }
+
 
     @Override
     public Product getProduct(Long id) {

@@ -13,8 +13,15 @@ import java.util.List;
 @Repository
 public class DbProductDao implements ProductDao {
 
+
+
     @Autowired
     ProductRepository productRepository;
+
+    @Override
+    public List<Product> getProductsByName(String name) {
+        return productRepository.findByNameLike(name);
+    }
 
     @Override
     public List<Product> getProducts() {
@@ -22,13 +29,9 @@ public class DbProductDao implements ProductDao {
 
     }
 
-    public List<Product> getProductByName(String name){
-        return productRepository.findByNameLike(name);
-    }
-
-
     @Override
     public List<Product> getProductByDescription(String description) {
+
         return null;
     }
 

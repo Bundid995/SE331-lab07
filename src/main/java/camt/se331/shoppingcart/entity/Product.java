@@ -9,7 +9,6 @@ import javax.persistence.Id;
  */
 
 @Entity
-
 public class Product implements Comparable{
 
     @Id

@@ -8,8 +8,8 @@ import java.util.List;
  * Created by Dto on 2/7/2015.
  */
 public interface ProductDao {
+    List<Product>getProductsByName(String name);
     List<Product> getProducts();
-    List<Product> getProductByName(String name);
     List<Product> getProductByDescription(String description);
     Product getProduct(Long id);
     Product addProduct(Product product);

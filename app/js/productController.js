@@ -2,6 +2,8 @@
 
 var productMainController = angular.module('productMainController', ['productServices']);
 
+
+
 productMainController.controller('addProductController', ['$scope', '$http', '$location', '$rootScope','productService',
     function ($scope, $http, $location, $rootScope,productService) {
         $scope.product = {};
@@ -28,10 +30,10 @@ productMainController.controller('listProductController', ['$scope', '$http', '$
             $scope.products = data;
 
             $scope.searchProduct = function(name){
-                 queryProductService.query({name:name},function(data) {
-                     $scope.products = data;
-                     });
-                 }
+                queryProductService.query({name:name},function(data) {
+                    $scope.products = data;
+                });
+            }
         });
 
 
