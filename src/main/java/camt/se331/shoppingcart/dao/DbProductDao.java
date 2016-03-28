@@ -18,8 +18,13 @@ public class DbProductDao implements ProductDao {
     ProductRepository productRepository;
 
     @Override
+<<<<<<< HEAD
+    public List<Product> getProductsByNameContaining(String name) {
+        return productRepository.findByNameContaining(name);
+=======
     public List<Product> getProductsByNameOrDescription(String name, String description) {
         return productRepository.findByNameOrDescriptionContainingIgnoreCase(name,name);
+>>>>>>> 9c0aae3afe197fad80d5bfdf2221f5cef03bf66a
     }
 
 

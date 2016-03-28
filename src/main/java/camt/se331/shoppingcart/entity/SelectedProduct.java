@@ -1,17 +1,26 @@
 package camt.se331.shoppingcart.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  * Created by Dto on 2/7/2015.
  */
+
+@Entity
+
 public class SelectedProduct {
+    @Id
+    @GeneratedValue
+    Long id;
+    @OneToOne
     Product product;
     Integer amount;
 
     public Double getTotalPrice(){
         return 0.0;
-    }
-
-    public SelectedProduct() {
     }
 
     public Product getProduct() {
@@ -35,4 +44,6 @@ public class SelectedProduct {
         this.product = product;
         this.amount = amount;
     }
+
+
 }
