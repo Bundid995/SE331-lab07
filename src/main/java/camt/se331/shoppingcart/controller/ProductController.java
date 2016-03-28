@@ -21,7 +21,7 @@ public class ProductController {
 
     @RequestMapping(value = "getProduct",method = RequestMethod.GET)
     public List<Product> getListByName(@RequestParam("name")String name){
-        return productService.getProductsByName(name);
+        return productService.getProductsByNameContaining(name);
 
     }
 

@@ -19,8 +19,8 @@ public class DbProductDao implements ProductDao {
     ProductRepository productRepository;
 
     @Override
-    public List<Product> getProductsByName(String name) {
-        return productRepository.findByNameLike(name);
+    public List<Product> getProductsByNameContaining(String name) {
+        return productRepository.findByNameContaining(name);
     }
 
     @Override
